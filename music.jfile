@@ -1,0 +1,27 @@
+function playMusic(){
+    //write to the log for debugging 
+    console.log("playMusic() started"); 
+    mySound = new sound("Music.mp3");//created my sound
+    console.log("playing Music.mp3 using the sound() function")
+    mySound.play(); //setting the sound up to play
+}
+
+function sound(srcFile){
+    //create an instance of the class. Makes an audio object
+    this.sound = document.createElement("audio");
+    //sets the source for src file
+    this.sound.src = srcFile;
+    //loads everything needed for the audio
+    this.sound.setAttribute("preload", "audio");
+    //setting up the controls for the audio. We have gone with having none, so the audio will simply play and end without any bells and whistles.
+    this.sound.setAttribute("controls", "none")
+    //Adding everything that we have done to this instance
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play(); //telling it to play the sound that we have loaded. Giving it a way to play the file.
+    }
+    this.stop = function(){
+        this.sound.pause();//stop function. Will pause the sound
+    }
+
+}
